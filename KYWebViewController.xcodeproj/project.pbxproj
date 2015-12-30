@@ -10,10 +10,43 @@
 		C2621EC21C33700600C8175B /* KYWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C2621EC11C33700600C8175B /* KYWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2621ED11C33716000C8175B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED01C33716000C8175B /* AppDelegate.swift */; };
 		C2621ED31C33716000C8175B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED21C33716000C8175B /* ViewController.swift */; };
-		C2621ED61C33716000C8175B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED41C33716000C8175B /* Main.storyboard */; };
 		C2621ED81C33716000C8175B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED71C33716000C8175B /* Assets.xcassets */; };
 		C2621EDB1C33716000C8175B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED91C33716000C8175B /* LaunchScreen.storyboard */; };
+		C2621EE31C33722100C8175B /* KYNavigationProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EE21C33722100C8175B /* KYNavigationProgress.framework */; };
+		C2621EE51C33729A00C8175B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EE41C33729A00C8175B /* UIKit.framework */; };
+		C2621EE81C3372FD00C8175B /* KYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621EE61C3372FD00C8175B /* KYWebViewController.swift */; };
+		C2621EEF1C3382AD00C8175B /* arrow_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEB1C3382AD00C8175B /* arrow_back@2x.png */; };
+		C2621EF01C3382AD00C8175B /* arrow_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEC1C3382AD00C8175B /* arrow_back@3x.png */; };
+		C2621EF11C3382AD00C8175B /* arrow_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EED1C3382AD00C8175B /* arrow_forward@2x.png */; };
+		C2621EF21C3382AD00C8175B /* arrow_forward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEE1C3382AD00C8175B /* arrow_forward@3x.png */; };
+		C2621EF31C33831200C8175B /* KYWebViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EBE1C33700600C8175B /* KYWebViewController.framework */; };
+		C2621EF41C33831200C8175B /* KYWebViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EBE1C33700600C8175B /* KYWebViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C2621EF91C3384CE00C8175B /* KYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2621EF81C3384CE00C8175B /* KYWebViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2621EF51C33831200C8175B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2621EB51C33700600C8175B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2621EBD1C33700600C8175B;
+			remoteInfo = KYWebViewController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C2621EF71C33831200C8175B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C2621EF41C33831200C8175B /* KYWebViewController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C2621EBE1C33700600C8175B /* KYWebViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KYWebViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,10 +55,17 @@
 		C2621ECE1C33716000C8175B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2621ED01C33716000C8175B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2621ED21C33716000C8175B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C2621ED51C33716000C8175B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2621ED71C33716000C8175B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2621EDA1C33716000C8175B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2621EDC1C33716000C8175B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2621EE21C33722100C8175B /* KYNavigationProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KYNavigationProgress.framework; path = Carthage/Build/iOS/KYNavigationProgress.framework; sourceTree = SOURCE_ROOT; };
+		C2621EE41C33729A00C8175B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C2621EE61C3372FD00C8175B /* KYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYWebViewController.swift; sourceTree = "<group>"; };
+		C2621EEB1C3382AD00C8175B /* arrow_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_back@2x.png"; sourceTree = "<group>"; };
+		C2621EEC1C3382AD00C8175B /* arrow_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_back@3x.png"; sourceTree = "<group>"; };
+		C2621EED1C3382AD00C8175B /* arrow_forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_forward@2x.png"; sourceTree = "<group>"; };
+		C2621EEE1C3382AD00C8175B /* arrow_forward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_forward@3x.png"; sourceTree = "<group>"; };
+		C2621EF81C3384CE00C8175B /* KYWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KYWebViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2621EE51C33729A00C8175B /* UIKit.framework in Frameworks */,
+				C2621EE31C33722100C8175B /* KYNavigationProgress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2621EF31C33831200C8175B /* KYWebViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +110,8 @@
 		C2621EC01C33700600C8175B /* KYWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2621EEA1C337F2100C8175B /* Resources */,
+				C2621EE01C3371E300C8175B /* Frameworks */,
 				C2621EC91C33701200C8175B /* Classes */,
 				C2621EC11C33700600C8175B /* KYWebViewController.h */,
 				C2621EC31C33700600C8175B /* Info.plist */,
@@ -77,6 +122,7 @@
 		C2621EC91C33701200C8175B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C2621EE61C3372FD00C8175B /* KYWebViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -86,12 +132,33 @@
 			children = (
 				C2621ED01C33716000C8175B /* AppDelegate.swift */,
 				C2621ED21C33716000C8175B /* ViewController.swift */,
-				C2621ED41C33716000C8175B /* Main.storyboard */,
 				C2621ED71C33716000C8175B /* Assets.xcassets */,
 				C2621ED91C33716000C8175B /* LaunchScreen.storyboard */,
 				C2621EDC1C33716000C8175B /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		C2621EE01C3371E300C8175B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2621EE41C33729A00C8175B /* UIKit.framework */,
+				C2621EE21C33722100C8175B /* KYNavigationProgress.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2621EEA1C337F2100C8175B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2621EEB1C3382AD00C8175B /* arrow_back@2x.png */,
+				C2621EEC1C3382AD00C8175B /* arrow_back@3x.png */,
+				C2621EED1C3382AD00C8175B /* arrow_forward@2x.png */,
+				C2621EEE1C3382AD00C8175B /* arrow_forward@3x.png */,
+				C2621EF81C3384CE00C8175B /* KYWebViewController.xib */,
+			);
+			name = Resources;
+			path = KYWebViewController.bundle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,6 +183,7 @@
 				C2621EBA1C33700600C8175B /* Frameworks */,
 				C2621EBB1C33700600C8175B /* Headers */,
 				C2621EBC1C33700600C8175B /* Resources */,
+				C2621EE11C33720300C8175B /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -133,10 +201,12 @@
 				C2621ECA1C33716000C8175B /* Sources */,
 				C2621ECB1C33716000C8175B /* Frameworks */,
 				C2621ECC1C33716000C8175B /* Resources */,
+				C2621EF71C33831200C8175B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C2621EF61C33831200C8175B /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -185,6 +255,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2621EF11C3382AD00C8175B /* arrow_forward@2x.png in Resources */,
+				C2621EF91C3384CE00C8175B /* KYWebViewController.xib in Resources */,
+				C2621EF01C3382AD00C8175B /* arrow_back@3x.png in Resources */,
+				C2621EEF1C3382AD00C8175B /* arrow_back@2x.png in Resources */,
+				C2621EF21C3382AD00C8175B /* arrow_forward@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,17 +269,35 @@
 			files = (
 				C2621EDB1C33716000C8175B /* LaunchScreen.storyboard in Resources */,
 				C2621ED81C33716000C8175B /* Assets.xcassets in Resources */,
-				C2621ED61C33716000C8175B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2621EE11C33720300C8175B /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/KYNavigationProgress.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C2621EB91C33700600C8175B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2621EE81C3372FD00C8175B /* KYWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,15 +312,15 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		C2621ED41C33716000C8175B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C2621ED51C33716000C8175B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		C2621EF61C33831200C8175B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2621EBD1C33700600C8175B /* KYWebViewController */;
+			targetProxy = C2621EF51C33831200C8175B /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		C2621ED91C33716000C8175B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -331,26 +424,37 @@
 		C2621EC71C33700600C8175B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KYWebViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kyo--hei.KYWebViewController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C2621EC81C33700600C8175B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KYWebViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -364,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -376,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
