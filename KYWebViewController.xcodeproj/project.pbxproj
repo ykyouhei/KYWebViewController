@@ -46,10 +46,18 @@
 		C2621EC01C33700600C8175B /* KYWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2621EC91C33701200C8175B /* Classes */,
 				C2621EC11C33700600C8175B /* KYWebViewController.h */,
 				C2621EC31C33700600C8175B /* Info.plist */,
 			);
 			path = KYWebViewController;
+			sourceTree = "<group>";
+		};
+		C2621EC91C33701200C8175B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
