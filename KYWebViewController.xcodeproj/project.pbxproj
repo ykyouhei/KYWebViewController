@@ -8,16 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		C2621EC21C33700600C8175B /* KYWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C2621EC11C33700600C8175B /* KYWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2621ED11C33716000C8175B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED01C33716000C8175B /* AppDelegate.swift */; };
+		C2621ED31C33716000C8175B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED21C33716000C8175B /* ViewController.swift */; };
+		C2621ED61C33716000C8175B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED41C33716000C8175B /* Main.storyboard */; };
+		C2621ED81C33716000C8175B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED71C33716000C8175B /* Assets.xcassets */; };
+		C2621EDB1C33716000C8175B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED91C33716000C8175B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C2621EBE1C33700600C8175B /* KYWebViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KYWebViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2621EC11C33700600C8175B /* KYWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYWebViewController.h; sourceTree = "<group>"; };
 		C2621EC31C33700600C8175B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2621ECE1C33716000C8175B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2621ED01C33716000C8175B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C2621ED21C33716000C8175B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C2621ED51C33716000C8175B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2621ED71C33716000C8175B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2621EDA1C33716000C8175B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2621EDC1C33716000C8175B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C2621EBA1C33700600C8175B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2621ECB1C33716000C8175B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -31,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				C2621EC01C33700600C8175B /* KYWebViewController */,
+				C2621ECF1C33716000C8175B /* Example */,
 				C2621EBF1C33700600C8175B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				C2621EBE1C33700600C8175B /* KYWebViewController.framework */,
+				C2621ECE1C33716000C8175B /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +79,19 @@
 			children = (
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		C2621ECF1C33716000C8175B /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				C2621ED01C33716000C8175B /* AppDelegate.swift */,
+				C2621ED21C33716000C8175B /* ViewController.swift */,
+				C2621ED41C33716000C8175B /* Main.storyboard */,
+				C2621ED71C33716000C8175B /* Assets.xcassets */,
+				C2621ED91C33716000C8175B /* LaunchScreen.storyboard */,
+				C2621EDC1C33716000C8175B /* Info.plist */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,16 +126,37 @@
 			productReference = C2621EBE1C33700600C8175B /* KYWebViewController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		C2621ECD1C33716000C8175B /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2621EDD1C33716000C8175B /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				C2621ECA1C33716000C8175B /* Sources */,
+				C2621ECB1C33716000C8175B /* Frameworks */,
+				C2621ECC1C33716000C8175B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Example;
+			productName = Example;
+			productReference = C2621ECE1C33716000C8175B /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C2621EB51C33700600C8175B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = kyo__hei;
 				TargetAttributes = {
 					C2621EBD1C33700600C8175B = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					C2621ECD1C33716000C8175B = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -112,6 +167,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C2621EB41C33700600C8175B;
 			productRefGroup = C2621EBF1C33700600C8175B /* Products */;
@@ -119,6 +175,7 @@
 			projectRoot = "";
 			targets = (
 				C2621EBD1C33700600C8175B /* KYWebViewController */,
+				C2621ECD1C33716000C8175B /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +185,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2621ECC1C33716000C8175B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2621EDB1C33716000C8175B /* LaunchScreen.storyboard in Resources */,
+				C2621ED81C33716000C8175B /* Assets.xcassets in Resources */,
+				C2621ED61C33716000C8175B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +208,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C2621ECA1C33716000C8175B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2621ED31C33716000C8175B /* ViewController.swift in Sources */,
+				C2621ED11C33716000C8175B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C2621ED41C33716000C8175B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2621ED51C33716000C8175B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C2621ED91C33716000C8175B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2621EDA1C33716000C8175B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C2621EC41C33700600C8175B /* Debug */ = {
@@ -265,6 +360,30 @@
 			};
 			name = Release;
 		};
+		C2621EDE1C33716000C8175B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kyo--hei.Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C2621EDF1C33716000C8175B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kyo--hei.Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -282,6 +401,14 @@
 			buildConfigurations = (
 				C2621EC71C33700600C8175B /* Debug */,
 				C2621EC81C33700600C8175B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C2621EDD1C33716000C8175B /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2621EDE1C33716000C8175B /* Debug */,
+				C2621EDF1C33716000C8175B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
