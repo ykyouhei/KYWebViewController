@@ -28,6 +28,10 @@ public final class KYWebViewController: UIViewController {
     
     public let wkWebView: WKWebView = WKWebView()
     
+    public var tintColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1) {
+        didSet { updateTintColors() }
+    }
+    
     private var HTMLString: String?
     
     private var request: NSURLRequest?
@@ -39,9 +43,9 @@ public final class KYWebViewController: UIViewController {
     // MARK: - Outlet
     /* ====================================================================== */
     
-    @IBOutlet private(set) weak var backBarButtonItem: UIBarButtonItem!
+    @IBOutlet private(set) weak var backButton: UIButton!
     
-    @IBOutlet private(set) weak var forwardBarButtonItem: UIBarButtonItem!
+    @IBOutlet private(set) weak var forwardButton: UIButton!
     
     @IBOutlet private(set) weak var reloadBarButtonItem: UIBarButtonItem!
     
@@ -52,11 +56,11 @@ public final class KYWebViewController: UIViewController {
     // MARK: - Action
     /* ====================================================================== */
     
-    @IBAction private func didTapBackButton(sender: UIBarButtonItem) {
+    @IBAction private func didTapBackButton(sender: UIButton) {
         wkWebView.goBack()
     }
     
-    @IBAction private func didTapForwardButton(sender: UIBarButtonItem) {
+    @IBAction private func didTapForwardButton(sender: UIButton) {
         wkWebView.goForward()
     }
     
@@ -64,6 +68,27 @@ public final class KYWebViewController: UIViewController {
         wkWebView.reload()
     }
     
+    @IBAction private func handleRongPressGesture(sender: UILongPressGestureRecognizer) {
+        guard let attachedView = sender.view else { return }
+        
+        var list = [WKBackForwardListItem]()
+        
+        switch attachedView {
+        case backButton:    list = wkWebView.backForwardList.backList.reverse()
+        case forwardButton: list = wkWebView.backForwardList.forwardList
+        default:            return
+        }
+        
+        let historyViewController = PageHistoryViewController(backForwardListItem: list)
+        let navigationController = UINavigationController(rootViewController: historyViewController)
+        
+        historyViewController.delegate = self
+        
+        navigationController.navigationBar.tintColor = tintColor
+        navigationController.progressTintColor       = tintColor
+        
+        presentViewController(navigationController, animated: true, completion: nil)
+    }
     
     
     /* ====================================================================== */
@@ -99,8 +124,8 @@ public final class KYWebViewController: UIViewController {
         super.viewDidLoad()
         
         defer {
-            backBarButtonItem.enabled = wkWebView.canGoBack
-            forwardBarButtonItem.enabled = wkWebView.canGoForward
+            backButton.enabled = wkWebView.canGoBack
+            forwardButton.enabled = wkWebView.canGoForward
         }
         
         wkWebView.frame = view.bounds
@@ -177,10 +202,10 @@ public final class KYWebViewController: UIViewController {
             navigationController?.setProgress(Float(wkWebView.estimatedProgress), animated: true)
             
         case KVOKeyPath.canGoBack:
-            backBarButtonItem.enabled = wkWebView.canGoBack
+            backButton.enabled = wkWebView.canGoBack
             
         case KVOKeyPath.canGoForward:
-            forwardBarButtonItem.enabled = wkWebView.canGoForward
+            forwardButton.enabled = wkWebView.canGoForward
             
         default:
             break
@@ -211,6 +236,33 @@ public final class KYWebViewController: UIViewController {
         wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.estimatedProgress)
         wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.canGoBack)
         wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.canGoForward)
+    }
+    
+    private func updateTintColors() {
+        view?.tintColor = tintColor
+        
+        backButton?.tintColor = tintColor
+        forwardButton?.tintColor = tintColor
+        reloadBarButtonItem?.tintColor = tintColor
+        navigationController?.progressTintColor = tintColor
+        navigationController?.navigationBar.tintColor = tintColor
+        
+        wkWebView.tintColor = tintColor
+    }
+    
+}
+
+
+extension KYWebViewController: PageHistoryViewControllerDelegate {
+    
+    func pageHistoryViewController(
+        viewController: PageHistoryViewController,
+        didSelectItem backForwardListItem: WKBackForwardListItem)
+    {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        let request = NSURLRequest(URL: backForwardListItem.URL)
+        wkWebView.loadRequest(request)
     }
     
 }

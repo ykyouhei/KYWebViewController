@@ -16,11 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let webViewController = KYWebViewController(URL: NSURL(string: "https://google.com/")!)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.rootViewController = UINavigationController(rootViewController: webViewController)
         
-        window?.rootViewController = UINavigationController(rootViewController: KYWebViewController(URL: NSURL(string: "https://github.com/")!))
+        webViewController.tintColor = UIColor.greenColor()
         
         window?.makeKeyAndVisible()
         

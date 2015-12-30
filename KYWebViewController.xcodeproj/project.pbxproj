@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		C2621EC21C33700600C8175B /* KYWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C2621EC11C33700600C8175B /* KYWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2621ED11C33716000C8175B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED01C33716000C8175B /* AppDelegate.swift */; };
-		C2621ED31C33716000C8175B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED21C33716000C8175B /* ViewController.swift */; };
 		C2621ED81C33716000C8175B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED71C33716000C8175B /* Assets.xcassets */; };
 		C2621EDB1C33716000C8175B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED91C33716000C8175B /* LaunchScreen.storyboard */; };
 		C2621EE31C33722100C8175B /* KYNavigationProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EE21C33722100C8175B /* KYNavigationProgress.framework */; };
 		C2621EE51C33729A00C8175B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EE41C33729A00C8175B /* UIKit.framework */; };
-		C2621EE81C3372FD00C8175B /* KYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621EE61C3372FD00C8175B /* KYWebViewController.swift */; };
 		C2621EEF1C3382AD00C8175B /* arrow_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEB1C3382AD00C8175B /* arrow_back@2x.png */; };
 		C2621EF01C3382AD00C8175B /* arrow_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEC1C3382AD00C8175B /* arrow_back@3x.png */; };
 		C2621EF11C3382AD00C8175B /* arrow_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EED1C3382AD00C8175B /* arrow_forward@2x.png */; };
@@ -22,6 +20,8 @@
 		C2621EF31C33831200C8175B /* KYWebViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EBE1C33700600C8175B /* KYWebViewController.framework */; };
 		C2621EF41C33831200C8175B /* KYWebViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EBE1C33700600C8175B /* KYWebViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2621EF91C3384CE00C8175B /* KYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2621EF81C3384CE00C8175B /* KYWebViewController.xib */; };
+		C2621F051C33CF2B00C8175B /* KYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621F041C33CF2B00C8175B /* KYWebViewController.swift */; };
+		C2621F081C33CF4A00C8175B /* PageHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621F061C33CF4A00C8175B /* PageHistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,18 +54,18 @@
 		C2621EC31C33700600C8175B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2621ECE1C33716000C8175B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2621ED01C33716000C8175B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C2621ED21C33716000C8175B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C2621ED71C33716000C8175B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2621EDA1C33716000C8175B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2621EDC1C33716000C8175B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2621EE21C33722100C8175B /* KYNavigationProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KYNavigationProgress.framework; path = Carthage/Build/iOS/KYNavigationProgress.framework; sourceTree = SOURCE_ROOT; };
 		C2621EE41C33729A00C8175B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C2621EE61C3372FD00C8175B /* KYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYWebViewController.swift; sourceTree = "<group>"; };
 		C2621EEB1C3382AD00C8175B /* arrow_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_back@2x.png"; sourceTree = "<group>"; };
 		C2621EEC1C3382AD00C8175B /* arrow_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_back@3x.png"; sourceTree = "<group>"; };
 		C2621EED1C3382AD00C8175B /* arrow_forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_forward@2x.png"; sourceTree = "<group>"; };
 		C2621EEE1C3382AD00C8175B /* arrow_forward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_forward@3x.png"; sourceTree = "<group>"; };
 		C2621EF81C3384CE00C8175B /* KYWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KYWebViewController.xib; sourceTree = "<group>"; };
+		C2621F041C33CF2B00C8175B /* KYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYWebViewController.swift; sourceTree = "<group>"; };
+		C2621F061C33CF4A00C8175B /* PageHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageHistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,16 +122,16 @@
 		C2621EC91C33701200C8175B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C2621EE61C3372FD00C8175B /* KYWebViewController.swift */,
+				C2621F041C33CF2B00C8175B /* KYWebViewController.swift */,
+				C2621F061C33CF4A00C8175B /* PageHistoryViewController.swift */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C2621ECF1C33716000C8175B /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				C2621ED01C33716000C8175B /* AppDelegate.swift */,
-				C2621ED21C33716000C8175B /* ViewController.swift */,
 				C2621ED71C33716000C8175B /* Assets.xcassets */,
 				C2621ED91C33716000C8175B /* LaunchScreen.storyboard */,
 				C2621EDC1C33716000C8175B /* Info.plist */,
@@ -297,7 +297,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2621EE81C3372FD00C8175B /* KYWebViewController.swift in Sources */,
+				C2621F081C33CF4A00C8175B /* PageHistoryViewController.swift in Sources */,
+				C2621F051C33CF2B00C8175B /* KYWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2621ED31C33716000C8175B /* ViewController.swift in Sources */,
 				C2621ED11C33716000C8175B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +509,7 @@
 				C2621EC81C33700600C8175B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2621EDD1C33716000C8175B /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +518,7 @@
 				C2621EDF1C33716000C8175B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
