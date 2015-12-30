@@ -22,6 +22,8 @@
 		C2621EF91C3384CE00C8175B /* KYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2621EF81C3384CE00C8175B /* KYWebViewController.xib */; };
 		C2621F051C33CF2B00C8175B /* KYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621F041C33CF2B00C8175B /* KYWebViewController.swift */; };
 		C2621F081C33CF4A00C8175B /* PageHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621F061C33CF4A00C8175B /* PageHistoryViewController.swift */; };
+		C2B1A58A1C33E5990012974A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EE41C33729A00C8175B /* UIKit.framework */; };
+		C2B1A58C1C33E5A40012974A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B1A58B1C33E5A40012974A /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,7 @@
 		C2621EF81C3384CE00C8175B /* KYWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KYWebViewController.xib; sourceTree = "<group>"; };
 		C2621F041C33CF2B00C8175B /* KYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYWebViewController.swift; sourceTree = "<group>"; };
 		C2621F061C33CF4A00C8175B /* PageHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageHistoryViewController.swift; sourceTree = "<group>"; };
+		C2B1A58B1C33E5A40012974A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B1A58C1C33E5A40012974A /* WebKit.framework in Frameworks */,
+				C2B1A58A1C33E5990012974A /* UIKit.framework in Frameworks */,
 				C2621EF31C33831200C8175B /* KYWebViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +147,7 @@
 		C2621EE01C3371E300C8175B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2B1A58B1C33E5A40012974A /* WebKit.framework */,
 				C2621EE41C33729A00C8175B /* UIKit.framework */,
 				C2621EE21C33722100C8175B /* KYNavigationProgress.framework */,
 			);
