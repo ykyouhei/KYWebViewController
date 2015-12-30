@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KYWebViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        window?.rootViewController = UINavigationController(rootViewController: KYWebViewController(URL: NSURL(string: "https://github.com/")!))
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
