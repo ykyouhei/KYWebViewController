@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KYWebViewController" customModule="KYWebViewController" customModuleProvider="target">
             <connections>
-                <outlet property="backBarButtonItem" destination="XLF-GP-g01" id="RAO-dj-hp1"/>
-                <outlet property="forwardBarButtonItem" destination="7Ij-17-a9y" id="7f5-GT-lqD"/>
+                <outlet property="backButton" destination="JtY-Qm-WRN" id="Dca-4v-S41"/>
+                <outlet property="forwardButton" destination="e1x-2T-ySp" id="WTd-Yo-FOw"/>
                 <outlet property="reloadBarButtonItem" destination="IZ4-6f-lOq" id="avL-Ua-KPh"/>
                 <outlet property="toolBar" destination="xXU-30-iz9" id="jFV-cT-iSJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,16 +22,30 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXU-30-iz9">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <items>
-                        <barButtonItem image="arrow_back.png" style="done" id="XLF-GP-g01">
-                            <connections>
-                                <action selector="didTapBackButton:" destination="-1" id="1uV-Dd-YuK"/>
-                            </connections>
+                        <barButtonItem style="plain" id="jjG-sl-7sh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JtY-Qm-WRN">
+                                <rect key="frame" x="20" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <state key="normal" image="arrow_back.png"/>
+                                <connections>
+                                    <action selector="didTapBackButton:" destination="-1" eventType="touchUpInside" id="nUA-L5-VMw"/>
+                                    <outletCollection property="gestureRecognizers" destination="fHG-ee-0Uc" appends="YES" id="ea1-dE-lXq"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="K2f-sA-RbC"/>
-                        <barButtonItem image="arrow_forward.png" id="7Ij-17-a9y">
-                            <connections>
-                                <action selector="didTapForwardButton:" destination="-1" id="Ajd-ah-ecR"/>
-                            </connections>
+                        <barButtonItem width="49" style="plain" systemItem="fixedSpace" id="Hv9-Uj-nZT"/>
+                        <barButtonItem style="plain" id="Vf4-6Z-MeA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e1x-2T-ySp">
+                                <rect key="frame" x="101" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <state key="normal" image="arrow_forward.png"/>
+                                <connections>
+                                    <action selector="didTapForwardButton:" destination="-1" eventType="touchUpInside" id="cxx-9K-Snj"/>
+                                    <outletCollection property="gestureRecognizers" destination="QxG-vV-Sv1" appends="YES" id="v4Q-2Z-f44"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="BVw-Qt-TSB"/>
                         <barButtonItem systemItem="refresh" id="IZ4-6f-lOq">
@@ -51,6 +65,12 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="-945" y="143"/>
         </view>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="fHG-ee-0Uc">
+            <connections>
+                <action selector="handleRongPressGesture:" destination="-1" id="3yz-SF-ghv"/>
+            </connections>
+        </pongPressGestureRecognizer>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="QxG-vV-Sv1"/>
     </objects>
     <resources>
         <image name="arrow_back.png" width="22" height="22"/>
