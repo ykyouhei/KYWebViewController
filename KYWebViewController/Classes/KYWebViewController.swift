@@ -132,8 +132,6 @@ public final class KYWebViewController: UIViewController {
             forwardButton.enabled = wkWebView.canGoForward
         }
         
-        addObservers()
-        
         wkWebView.frame = view.bounds
         wkWebView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -176,7 +174,14 @@ public final class KYWebViewController: UIViewController {
         }
     }
     
-    deinit {
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        addObservers()
+    }
+    
+    public override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        wkWebView.stopLoading()
         removeObservers()
     }
     
