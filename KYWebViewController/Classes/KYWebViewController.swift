@@ -147,8 +147,6 @@ public final class KYWebViewController: UIViewController {
             metrics: nil,
             views: ["wkWebView" : wkWebView]))
         
-        addObservers()
-        
         if let HTMLString = HTMLString {
             wkWebView.loadHTMLString(HTMLString, baseURL: nil)
             return
