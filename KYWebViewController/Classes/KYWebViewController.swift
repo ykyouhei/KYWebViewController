@@ -32,6 +32,8 @@ public final class KYWebViewController: UIViewController {
         didSet { updateTintColors() }
     }
     
+    public let historyNavigationController = UINavigationController()
+    
     private var HTMLString: String?
     
     private var request: NSURLRequest?
@@ -69,7 +71,10 @@ public final class KYWebViewController: UIViewController {
     }
     
     @IBAction private func handleRongPressGesture(sender: UILongPressGestureRecognizer) {
-        guard let attachedView = sender.view else { return }
+        guard let attachedView = sender.view where
+            sender.state == .Began  else {
+                return
+        }
         
         var list = [WKBackForwardListItem]()
         
@@ -79,15 +84,14 @@ public final class KYWebViewController: UIViewController {
         default:            return
         }
         
-        let historyViewController = PageHistoryViewController(backForwardListItem: list)
-        let navigationController = UINavigationController(rootViewController: historyViewController)
+        let historyViewController = PageHistoryViewController()
         
         historyViewController.delegate = self
+        historyViewController.backForwardListItems = list
         
-        navigationController.navigationBar.tintColor = tintColor
-        navigationController.progressTintColor       = tintColor
+        historyNavigationController.setViewControllers([historyViewController], animated: false)
         
-        presentViewController(navigationController, animated: true, completion: nil)
+        presentViewController(historyNavigationController, animated: true, completion: nil)
     }
     
     
@@ -127,6 +131,8 @@ public final class KYWebViewController: UIViewController {
             backButton.enabled = wkWebView.canGoBack
             forwardButton.enabled = wkWebView.canGoForward
         }
+        
+        addObservers()
         
         wkWebView.frame = view.bounds
         wkWebView.translatesAutoresizingMaskIntoConstraints = false
@@ -170,13 +176,7 @@ public final class KYWebViewController: UIViewController {
         }
     }
     
-    public override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        addObservers()
-    }
-    
-    public override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
+    deinit {
         removeObservers()
     }
     
