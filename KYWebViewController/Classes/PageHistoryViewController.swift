@@ -19,23 +19,22 @@ internal protocol PageHistoryViewControllerDelegate: NSObjectProtocol {
 
 internal final class PageHistoryViewController: UIViewController {
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: self.view.bounds)
+        tableView.dataSource = self
+        tableView.delegate   = self
+        return tableView
+    }()
+    
     internal weak var delegate: PageHistoryViewControllerDelegate?
     
-    private var backForwardListItems = [WKBackForwardListItem]()
-    
-    private init() {
-        super.init(nibName: nil, bundle: nil)
+    internal var backForwardListItems = [WKBackForwardListItem]() {
+        didSet {
+            guard isViewLoaded() else { return }
+            tableView.reloadData()
+        }
     }
     
-    internal convenience init(backForwardListItem: [WKBackForwardListItem]) {
-        self.init()
-        self.backForwardListItems = backForwardListItem
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     internal func didTapCloseButton(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -43,10 +42,6 @@ internal final class PageHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tableView = UITableView(frame: view.bounds)
-        
-        tableView.dataSource = self
-        tableView.delegate   = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(tableView)
