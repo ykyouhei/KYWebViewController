@@ -28,6 +28,8 @@ public final class KYWebViewController: UIViewController {
     
     public let wkWebView: WKWebView = WKWebView()
     
+    public var showNavigationProgress = true
+    
     public var tintColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1) {
         didSet { updateTintColors() }
     }
@@ -198,10 +200,8 @@ public final class KYWebViewController: UIViewController {
         
         switch keyPath {
         case KVOKeyPath.estimatedProgress:
-            guard navigationController?.progress < 1.0 else {
-                navigationController?.finishProgress()
-                return
-            }
+            guard showNavigationProgress else { return }
+            
             navigationController?.setProgress(Float(wkWebView.estimatedProgress), animated: true)
             
         case KVOKeyPath.canGoBack:
@@ -251,6 +251,21 @@ public final class KYWebViewController: UIViewController {
         navigationController?.navigationBar.tintColor = tintColor
         
         wkWebView.tintColor = tintColor
+    }
+    
+}
+
+
+extension KYWebViewController: WKNavigationDelegate {
+    
+    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        guard showNavigationProgress else { return }
+        navigationController?.finishProgress()
+    }
+    
+    public func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+        guard showNavigationProgress else { return }
+        navigationController?.finishProgress()
     }
     
 }
