@@ -129,6 +129,8 @@ public final class KYWebViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        addObservers()
+        
         defer {
             backButton.enabled = wkWebView.canGoBack
             forwardButton.enabled = wkWebView.canGoForward
@@ -174,14 +176,12 @@ public final class KYWebViewController: UIViewController {
         }
     }
     
-    public override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        addObservers()
-    }
-    
     public override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         wkWebView.stopLoading()
+    }
+    
+    deinit {
         removeObservers()
     }
     
