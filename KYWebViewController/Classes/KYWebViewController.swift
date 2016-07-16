@@ -10,6 +10,18 @@ import UIKit
 import WebKit
 import KYNavigationProgress
 
+public protocol KYWebViewControllerDelegate: class {
+    
+    func webViewController(
+        webViewController: KYWebViewController,
+        updatedEstimatedProgress progress: Double)
+    
+    func webViewController(
+        webViewController: KYWebViewController,
+        didChangeLoading loading: Bool)
+    
+}
+
 public final class KYWebViewController: UIViewController {
     
     /* ====================================================================== */
@@ -18,6 +30,7 @@ public final class KYWebViewController: UIViewController {
     
     private struct KVOKeyPath {
         static let estimatedProgress = "estimatedProgress"
+        static let loading           = "loading"
         static let canGoBack         = "canGoBack"
         static let canGoForward      = "canGoForward"
     }
@@ -28,7 +41,11 @@ public final class KYWebViewController: UIViewController {
     
     public let wkWebView: WKWebView = WKWebView()
     
-    public var showNavigationProgress = true
+    public weak var delegate: KYWebViewControllerDelegate?
+    
+    public var navigationProgressEnabled = true
+    
+    public var shouldShowHistoryViewController = true
     
     public var tintColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1) {
         didSet { updateTintColors() }
@@ -73,6 +90,8 @@ public final class KYWebViewController: UIViewController {
     }
     
     @IBAction private func handleRongPressGesture(sender: UILongPressGestureRecognizer) {
+        guard shouldShowHistoryViewController else { return }
+        
         guard let attachedView = sender.view where
             sender.state == .Began  else {
                 return
@@ -200,9 +219,20 @@ public final class KYWebViewController: UIViewController {
         
         switch keyPath {
         case KVOKeyPath.estimatedProgress:
-            guard showNavigationProgress else { return }
+            self.delegate?.webViewController(self, updatedEstimatedProgress: wkWebView.estimatedProgress)
             
-            navigationController?.setProgress(Float(wkWebView.estimatedProgress), animated: true)
+            if navigationProgressEnabled {
+                navigationController?.setProgress(Float(wkWebView.estimatedProgress), animated: true)
+            }
+        
+        case KVOKeyPath.loading:
+            guard !wkWebView.loading else { return }
+            
+            self.delegate?.webViewController(self, didChangeLoading: wkWebView.loading)
+            
+            if navigationProgressEnabled  {
+                navigationController?.finishProgress()
+            }
             
         case KVOKeyPath.canGoBack:
             backButton.enabled = wkWebView.canGoBack
@@ -226,6 +256,10 @@ public final class KYWebViewController: UIViewController {
             options: .New,
             context: nil)
         wkWebView.addObserver(self,
+            forKeyPath: KVOKeyPath.loading,
+            options: .New,
+            context: nil)
+        wkWebView.addObserver(self,
             forKeyPath: KVOKeyPath.canGoBack,
             options: .New,
             context: nil)
@@ -237,6 +271,7 @@ public final class KYWebViewController: UIViewController {
     
     private func removeObservers() {
         wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.estimatedProgress)
+        wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.loading)
         wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.canGoBack)
         wkWebView.removeObserver(self, forKeyPath: KVOKeyPath.canGoForward)
     }
@@ -251,21 +286,6 @@ public final class KYWebViewController: UIViewController {
         navigationController?.navigationBar.tintColor = tintColor
         
         wkWebView.tintColor = tintColor
-    }
-    
-}
-
-
-extension KYWebViewController: WKNavigationDelegate {
-    
-    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        guard showNavigationProgress else { return }
-        navigationController?.finishProgress()
-    }
-    
-    public func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
-        guard showNavigationProgress else { return }
-        navigationController?.finishProgress()
     }
     
 }

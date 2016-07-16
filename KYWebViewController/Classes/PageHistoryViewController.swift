@@ -59,7 +59,7 @@ internal final class PageHistoryViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .Done,
             target: self,
-            action: "didTapCloseButton:")
+            action: #selector(PageHistoryViewController.didTapCloseButton(_:)))
     }
 
 }
