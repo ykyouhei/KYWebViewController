@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41EE83FE1D3B7B5A00A7A477 /* MarkedView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EE83FD1D3B7B5A00A7A477 /* MarkedView.framework */; };
+		41EE84001D3B7BE800A7A477 /* KYNavigationProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EE21C33722100C8175B /* KYNavigationProgress.framework */; };
+		41EE84011D3B7BE800A7A477 /* MarkedView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EE83FD1D3B7B5A00A7A477 /* MarkedView.framework */; };
 		C2621EC21C33700600C8175B /* KYWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C2621EC11C33700600C8175B /* KYWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2621ED11C33716000C8175B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621ED01C33716000C8175B /* AppDelegate.swift */; };
 		C2621ED81C33716000C8175B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2621ED71C33716000C8175B /* Assets.xcassets */; };
@@ -17,8 +20,6 @@
 		C2621EF01C3382AD00C8175B /* arrow_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEC1C3382AD00C8175B /* arrow_back@3x.png */; };
 		C2621EF11C3382AD00C8175B /* arrow_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EED1C3382AD00C8175B /* arrow_forward@2x.png */; };
 		C2621EF21C3382AD00C8175B /* arrow_forward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2621EEE1C3382AD00C8175B /* arrow_forward@3x.png */; };
-		C2621EF31C33831200C8175B /* KYWebViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EBE1C33700600C8175B /* KYWebViewController.framework */; };
-		C2621EF41C33831200C8175B /* KYWebViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C2621EBE1C33700600C8175B /* KYWebViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2621EF91C3384CE00C8175B /* KYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2621EF81C3384CE00C8175B /* KYWebViewController.xib */; };
 		C2621F051C33CF2B00C8175B /* KYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621F041C33CF2B00C8175B /* KYWebViewController.swift */; };
 		C2621F081C33CF4A00C8175B /* PageHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2621F061C33CF4A00C8175B /* PageHistoryViewController.swift */; };
@@ -26,31 +27,8 @@
 		C2B1A58C1C33E5A40012974A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B1A58B1C33E5A40012974A /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C2621EF51C33831200C8175B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C2621EB51C33700600C8175B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C2621EBD1C33700600C8175B;
-			remoteInfo = KYWebViewController;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C2621EF71C33831200C8175B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C2621EF41C33831200C8175B /* KYWebViewController.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		41EE83FD1D3B7B5A00A7A477 /* MarkedView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkedView.framework; path = Carthage/Build/iOS/MarkedView.framework; sourceTree = SOURCE_ROOT; };
 		C2621EBE1C33700600C8175B /* KYWebViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KYWebViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2621EC11C33700600C8175B /* KYWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYWebViewController.h; sourceTree = "<group>"; };
 		C2621EC31C33700600C8175B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2621EE51C33729A00C8175B /* UIKit.framework in Frameworks */,
+				41EE83FE1D3B7B5A00A7A477 /* MarkedView.framework in Frameworks */,
 				C2621EE31C33722100C8175B /* KYNavigationProgress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,9 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41EE84001D3B7BE800A7A477 /* KYNavigationProgress.framework in Frameworks */,
+				41EE84011D3B7BE800A7A477 /* MarkedView.framework in Frameworks */,
 				C2B1A58C1C33E5A40012974A /* WebKit.framework in Frameworks */,
 				C2B1A58A1C33E5990012974A /* UIKit.framework in Frameworks */,
-				C2621EF31C33831200C8175B /* KYWebViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +127,7 @@
 		C2621EE01C3371E300C8175B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41EE83FD1D3B7B5A00A7A477 /* MarkedView.framework */,
 				C2B1A58B1C33E5A40012974A /* WebKit.framework */,
 				C2621EE41C33729A00C8175B /* UIKit.framework */,
 				C2621EE21C33722100C8175B /* KYNavigationProgress.framework */,
@@ -189,7 +170,6 @@
 				C2621EBA1C33700600C8175B /* Frameworks */,
 				C2621EBB1C33700600C8175B /* Headers */,
 				C2621EBC1C33700600C8175B /* Resources */,
-				C2621EE11C33720300C8175B /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -207,12 +187,11 @@
 				C2621ECA1C33716000C8175B /* Sources */,
 				C2621ECB1C33716000C8175B /* Frameworks */,
 				C2621ECC1C33716000C8175B /* Resources */,
-				C2621EF71C33831200C8175B /* Embed Frameworks */,
+				41EE83FF1D3B7B9200A7A477 /* Carthage */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C2621EF61C33831200C8175B /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -281,20 +260,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C2621EE11C33720300C8175B /* Carthage */ = {
+		41EE83FF1D3B7B9200A7A477 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/KYNavigationProgress.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MarkedView.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -317,14 +297,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C2621EF61C33831200C8175B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C2621EBD1C33700600C8175B /* KYWebViewController */;
-			targetProxy = C2621EF51C33831200C8175B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C2621ED91C33716000C8175B /* LaunchScreen.storyboard */ = {
@@ -474,7 +446,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -487,7 +462,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

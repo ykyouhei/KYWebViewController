@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import KYNavigationProgress
+import MarkedView
 
 public protocol KYWebViewControllerDelegate: class {
     
@@ -28,6 +29,13 @@ public final class KYWebViewController: UIViewController {
     // MARK: - Types
     /* ====================================================================== */
     
+    public enum ContentsType {
+        case HTML(HTMLString: String)
+        case Request(request: NSURLRequest)
+        case URL(NSURL: NSURL)
+        case Markdown(markdownString: String)
+    }
+    
     private struct KVOKeyPath {
         static let estimatedProgress = "estimatedProgress"
         static let loading           = "loading"
@@ -35,11 +43,19 @@ public final class KYWebViewController: UIViewController {
         static let canGoForward      = "canGoForward"
     }
     
-    /* ====================================================================== */
+    /* ==============================s======================================== */
     // MARK: - Properties
     /* ====================================================================== */
     
-    public let wkWebView: WKWebView = WKWebView()
+    private let wkMarkedView: WKMarkedView = WKMarkedView()
+    
+    private var initialContentsType: ContentsType
+    
+    public var wkWebView: WKWebView {
+        return self.wkMarkedView.subviews
+            .filter { $0 is WKWebView }
+            .first! as! WKWebView
+    }
     
     public weak var delegate: KYWebViewControllerDelegate?
     
@@ -120,24 +136,14 @@ public final class KYWebViewController: UIViewController {
     // MARK: - initializer
     /* ====================================================================== */
     
-    public convenience init() {
+    public init(initialContentsType: ContentsType) {
         let bundle = NSBundle(forClass: KYWebViewController.self)
-        self.init(nibName: "KYWebViewController", bundle: bundle)
+        self.initialContentsType = initialContentsType
+        super.init(nibName: "KYWebViewController", bundle: bundle)
     }
     
-    public convenience init(HTMLString: String) {
-        self.init()
-        self.HTMLString = HTMLString
-    }
-    
-    public convenience init(request: NSURLRequest) {
-        self.init()
-        self.request = request
-    }
-    
-    public convenience init(URL: NSURL) {
-        self.init()
-        self.URL = URL
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -155,36 +161,36 @@ public final class KYWebViewController: UIViewController {
             forwardButton.enabled = wkWebView.canGoForward
         }
         
-        wkWebView.frame = view.bounds
-        wkWebView.translatesAutoresizingMaskIntoConstraints = false
+        wkMarkedView.frame = view.bounds
+        wkMarkedView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.insertSubview(wkWebView, atIndex: 0)
+        view.insertSubview(wkMarkedView, atIndex: 0)
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-0-[wkWebView]-0-|",
+            "H:|-0-[wkMarkedView]-0-|",
             options: [],
             metrics: nil,
-            views: ["wkWebView" : wkWebView]))
+            views: ["wkMarkedView" : wkMarkedView]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[wkWebView]-0-|",
+            "V:|-0-[wkMarkedView]-0-|",
             options: [],
             metrics: nil,
-            views: ["wkWebView" : wkWebView]))
+            views: ["wkMarkedView" : wkMarkedView]))
         
-        if let HTMLString = HTMLString {
+        switch initialContentsType {
+        case .HTML(let HTMLString):
             wkWebView.loadHTMLString(HTMLString, baseURL: nil)
-            return
+        
+        case .Request(let request):
+            wkWebView.loadRequest(request)
+            
+        case .URL(let NSURL):
+            let request = NSURLRequest(URL: NSURL)
+            wkWebView.loadRequest(request)
+            
+        case .Markdown(let markdownString):
+            wkMarkedView.textToMark(markdownString)
         }
         
-        if let request = request {
-            wkWebView.loadRequest(request)
-            return
-        }
-        
-        if let URL = URL {
-            let request = NSURLRequest(URL: URL)
-            wkWebView.loadRequest(request)
-            return
-        }
     }
     
     public override func viewDidLayoutSubviews() {
