@@ -23,7 +23,7 @@ public protocol KYWebViewControllerDelegate: class {
     
 }
 
-public final class KYWebViewController: UIViewController {
+public class KYWebViewController: UIViewController {
     
     /* ====================================================================== */
     // MARK: - Types
