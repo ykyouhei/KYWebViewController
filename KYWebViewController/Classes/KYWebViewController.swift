@@ -47,7 +47,9 @@ public class KYWebViewController: UIViewController {
     // MARK: - Properties
     /* ====================================================================== */
     
-    private let wkMarkedView: WKMarkedView = WKMarkedView()
+    private let wkMarkedView: WKMarkedView = {
+        return WKMarkedView()
+    }()
     
     private var initialContentsType: ContentsType
     
