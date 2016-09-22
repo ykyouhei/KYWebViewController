@@ -12,7 +12,7 @@ import WebKit
 internal protocol PageHistoryViewControllerDelegate: NSObjectProtocol {
     
     func pageHistoryViewController(
-        viewController: PageHistoryViewController,
+        _ viewController: PageHistoryViewController,
         didSelectItem backForwardListItem: WKBackForwardListItem)
     
 }
@@ -30,13 +30,13 @@ internal final class PageHistoryViewController: UIViewController {
     
     internal var backForwardListItems = [WKBackForwardListItem]() {
         didSet {
-            guard isViewLoaded() else { return }
+            guard isViewLoaded else { return }
             tableView.reloadData()
         }
     }
     
-    internal func didTapCloseButton(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    internal func didTapCloseButton(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -45,19 +45,19 @@ internal final class PageHistoryViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(tableView)
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-0-[tableView]-0-|",
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[tableView]-0-|",
             options: [],
             metrics: nil,
             views: ["tableView" : tableView]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[tableView]-0-|",
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[tableView]-0-|",
             options: [],
             metrics: nil,
             views: ["tableView" : tableView]))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .Done,
+            barButtonSystemItem: .done,
             target: self,
             action: #selector(PageHistoryViewController.didTapCloseButton(_:)))
     }
@@ -67,18 +67,18 @@ internal final class PageHistoryViewController: UIViewController {
 
 extension PageHistoryViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return backForwardListItems.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "cell"
-        let backForwardItem = backForwardListItems[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) ??
-            UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
+        let backForwardItem = backForwardListItems[(indexPath as NSIndexPath).row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ??
+            UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         
         cell.textLabel?.text = backForwardItem.title
-        cell.detailTextLabel?.text = backForwardItem.URL.absoluteString
+        cell.detailTextLabel?.text = backForwardItem.url.absoluteString
         
         return cell
     }
@@ -88,8 +88,8 @@ extension PageHistoryViewController: UITableViewDataSource {
 
 extension PageHistoryViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let backForwardItem = backForwardListItems[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let backForwardItem = backForwardListItems[(indexPath as NSIndexPath).row]
         delegate?.pageHistoryViewController(self, didSelectItem: backForwardItem)
     }
     

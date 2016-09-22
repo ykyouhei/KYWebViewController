@@ -14,29 +14,29 @@ import MarkedView
 public protocol KYWebViewControllerDelegate: class {
     
     func webViewController(
-        webViewController: KYWebViewController,
+        _ webViewController: KYWebViewController,
         updatedEstimatedProgress progress: Double)
     
     func webViewController(
-        webViewController: KYWebViewController,
+        _ webViewController: KYWebViewController,
         didChangeLoading loading: Bool)
     
 }
 
-public class KYWebViewController: UIViewController {
+open class KYWebViewController: UIViewController {
     
     /* ====================================================================== */
     // MARK: - Types
     /* ====================================================================== */
     
     public enum ContentsType {
-        case HTML(HTMLString: String)
-        case Request(request: NSURLRequest)
-        case URL(NSURL: NSURL)
-        case Markdown(markdownString: String)
+        case html(htmlString: String)
+        case request(request: URLRequest)
+        case url(url: Foundation.URL)
+        case markdown(markdownString: String)
     }
     
-    private struct KVOKeyPath {
+    fileprivate struct KVOKeyPath {
         static let estimatedProgress = "estimatedProgress"
         static let loading           = "loading"
         static let canGoBack         = "canGoBack"
@@ -47,13 +47,13 @@ public class KYWebViewController: UIViewController {
     // MARK: - Properties
     /* ====================================================================== */
     
-    private let wkMarkedView: WKMarkedView = {
+    fileprivate let wkMarkedView: WKMarkedView = {
         return WKMarkedView()
     }()
     
     private var initialContentsType: ContentsType
     
-    public var wkWebView: WKWebView {
+    open var wkWebView: WKWebView {
         return self.wkMarkedView.subviews
             .filter { $0 is WKWebView }
             .first! as! WKWebView
@@ -73,9 +73,9 @@ public class KYWebViewController: UIViewController {
     
     private var HTMLString: String?
     
-    private var request: NSURLRequest?
+    private var request: URLRequest?
     
-    private var URL: NSURL?
+    private var URL: Foundation.URL?
     
     
     /* ====================================================================== */
@@ -95,30 +95,30 @@ public class KYWebViewController: UIViewController {
     // MARK: - Action
     /* ====================================================================== */
     
-    @IBAction private func didTapBackButton(sender: UIButton) {
+    @IBAction private func didTapBackButton(_ sender: UIButton) {
         wkWebView.goBack()
     }
     
-    @IBAction private func didTapForwardButton(sender: UIButton) {
+    @IBAction private func didTapForwardButton(_ sender: UIButton) {
         wkWebView.goForward()
     }
     
-    @IBAction private func didTapReloadButton(sender: UIBarButtonItem) {
+    @IBAction private func didTapReloadButton(_ sender: UIBarButtonItem) {
         wkWebView.reload()
     }
     
-    @IBAction private func handleRongPressGesture(sender: UILongPressGestureRecognizer) {
+    @IBAction private func handleRongPressGesture(_ sender: UILongPressGestureRecognizer) {
         guard shouldShowHistoryViewController else { return }
         
-        guard let attachedView = sender.view where
-            sender.state == .Began  else {
+        guard let attachedView = sender.view ,
+            sender.state == .began  else {
                 return
         }
         
         var list = [WKBackForwardListItem]()
         
         switch attachedView {
-        case backButton:    list = wkWebView.backForwardList.backList.reverse()
+        case backButton:    list = wkWebView.backForwardList.backList.reversed()
         case forwardButton: list = wkWebView.backForwardList.forwardList
         default:            return
         }
@@ -130,7 +130,7 @@ public class KYWebViewController: UIViewController {
         
         historyNavigationController.setViewControllers([historyViewController], animated: false)
         
-        presentViewController(historyNavigationController, animated: true, completion: nil)
+        present(historyNavigationController, animated: true, completion: nil)
     }
     
     
@@ -139,7 +139,7 @@ public class KYWebViewController: UIViewController {
     /* ====================================================================== */
     
     public init(initialContentsType: ContentsType) {
-        let bundle = NSBundle(forClass: KYWebViewController.self)
+        let bundle = Bundle(for: KYWebViewController.self)
         self.initialContentsType = initialContentsType
         super.init(nibName: "KYWebViewController", bundle: bundle)
     }
@@ -153,49 +153,49 @@ public class KYWebViewController: UIViewController {
     // MARK: - View Life Cycle
     /* ====================================================================== */
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         addObservers()
         
         defer {
-            backButton.enabled = wkWebView.canGoBack
-            forwardButton.enabled = wkWebView.canGoForward
+            backButton.isEnabled = wkWebView.canGoBack
+            forwardButton.isEnabled = wkWebView.canGoForward
         }
         
         wkMarkedView.frame = view.bounds
         wkMarkedView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.insertSubview(wkMarkedView, atIndex: 0)
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-0-[wkMarkedView]-0-|",
+        view.insertSubview(wkMarkedView, at: 0)
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[wkMarkedView]-0-|",
             options: [],
             metrics: nil,
             views: ["wkMarkedView" : wkMarkedView]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[wkMarkedView]-0-|",
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[wkMarkedView]-0-|",
             options: [],
             metrics: nil,
             views: ["wkMarkedView" : wkMarkedView]))
         
         switch initialContentsType {
-        case .HTML(let HTMLString):
+        case .html(let HTMLString):
             wkWebView.loadHTMLString(HTMLString, baseURL: nil)
         
-        case .Request(let request):
-            wkWebView.loadRequest(request)
+        case .request(let request):
+            wkWebView.load(request)
             
-        case .URL(let NSURL):
-            let request = NSURLRequest(URL: NSURL)
-            wkWebView.loadRequest(request)
+        case .url(let NSURL):
+            let request = URLRequest(url: NSURL)
+            wkWebView.load(request)
             
-        case .Markdown(let markdownString):
+        case .markdown(let markdownString):
             wkMarkedView.textToMark(markdownString)
         }
         
     }
     
-    public override func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let _ = toolBar.superview {
             wkWebView.scrollView.scrollIndicatorInsets.bottom = toolBar.frame.height
@@ -203,7 +203,7 @@ public class KYWebViewController: UIViewController {
         }
     }
     
-    public override func viewDidDisappear(animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         wkWebView.stopLoading()
     }
@@ -217,11 +217,11 @@ public class KYWebViewController: UIViewController {
     // MARK: - KVO
     /* ====================================================================== */
     
-    public override func observeValueForKeyPath(
-        keyPath: String?,
-        ofObject object: AnyObject?,
-        change: [String : AnyObject]?,
-        context: UnsafeMutablePointer<Void>)
+    open override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?)
     {
         guard let keyPath = keyPath else { return }
         
@@ -234,19 +234,19 @@ public class KYWebViewController: UIViewController {
             }
         
         case KVOKeyPath.loading:
-            guard !wkWebView.loading else { return }
+            guard !wkWebView.isLoading else { return }
             
-            self.delegate?.webViewController(self, didChangeLoading: wkWebView.loading)
+            self.delegate?.webViewController(self, didChangeLoading: wkWebView.isLoading)
             
             if navigationProgressEnabled  {
                 navigationController?.finishProgress()
             }
             
         case KVOKeyPath.canGoBack:
-            backButton.enabled = wkWebView.canGoBack
+            backButton.isEnabled = wkWebView.canGoBack
             
         case KVOKeyPath.canGoForward:
-            forwardButton.enabled = wkWebView.canGoForward
+            forwardButton.isEnabled = wkWebView.canGoForward
             
         default:
             break
@@ -261,19 +261,19 @@ public class KYWebViewController: UIViewController {
     private func addObservers() {
         wkWebView.addObserver(self,
             forKeyPath: KVOKeyPath.estimatedProgress,
-            options: .New,
+            options: .new,
             context: nil)
         wkWebView.addObserver(self,
             forKeyPath: KVOKeyPath.loading,
-            options: .New,
+            options: .new,
             context: nil)
         wkWebView.addObserver(self,
             forKeyPath: KVOKeyPath.canGoBack,
-            options: .New,
+            options: .new,
             context: nil)
         wkWebView.addObserver(self,
             forKeyPath: KVOKeyPath.canGoForward,
-            options: .New,
+            options: .new,
             context: nil)
     }
     
@@ -302,13 +302,13 @@ public class KYWebViewController: UIViewController {
 extension KYWebViewController: PageHistoryViewControllerDelegate {
     
     func pageHistoryViewController(
-        viewController: PageHistoryViewController,
+        _ viewController: PageHistoryViewController,
         didSelectItem backForwardListItem: WKBackForwardListItem)
     {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
-        let request = NSURLRequest(URL: backForwardListItem.URL)
-        wkWebView.loadRequest(request)
+        let request = URLRequest(url: backForwardListItem.url)
+        wkWebView.load(request)
     }
     
 }
